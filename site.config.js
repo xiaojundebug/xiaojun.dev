@@ -19,6 +19,8 @@ module.exports = {
     { name: 'lufangzhou', link: 'https://zhoufanglu.github.io/vuepressBlog' },
     { name: 'wallleap', link: 'https://myblog.wallleap.cn' },
     { name: 'Song\'s Blog', link: 'https://songxwn.com' },
+    { name: '远川', link: 'https://crazystudent13.cn' },
+    { name: '泰罗', link: 'https://bioart.icu' },
   ],
   // en | zh-CN
   language: 'zh-CN',

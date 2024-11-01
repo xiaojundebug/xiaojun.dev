@@ -1,13 +1,17 @@
 import React, { createContext, PropsWithChildren } from 'react'
+import { SevenSegmentDisplayProps } from '.'
 
-export interface SevenSegmentDisplayContext {
-  digitSize: number
-  segmentThickness: number
-  segmentSpacing: number
-  segmentActiveColor: string
-  segmentInactiveColor: string
-  glow: boolean
-}
+export type SevenSegmentDisplayContext = Required<
+  Pick<
+    SevenSegmentDisplayProps,
+    | 'digitSize'
+    | 'segmentThickness'
+    | 'segmentSpacing'
+    | 'segmentActiveColor'
+    | 'segmentInactiveColor'
+    | 'glow'
+  >
+>
 
 export interface SevenSegmentDisplayProviderProps extends SevenSegmentDisplayContext {}
 

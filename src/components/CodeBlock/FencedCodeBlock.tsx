@@ -6,6 +6,15 @@ import useBoolean from '@/hooks/useBoolean'
 import { copyToClipboard } from '@/common/clipboard'
 import CopyButton from './CopyButton'
 
+const enum CodeLineMarks {
+  ADDED = '++',
+  REMOVED = '--',
+  HIGHLIGHT = 'highlight',
+  WARNING = 'warning',
+  ERROR = 'error',
+  FOCUS = 'focus',
+}
+
 export interface FencedCodeBlockProps {
   language: ProviderProps['language']
   code: string
@@ -20,71 +29,79 @@ const FencedCodeBlock: React.FC<FencedCodeBlockProps> = props => {
   const { language, code, highlights = '', raw, lineNumbers, title } = props
   const [copied, { set: setCopied }] = useBoolean(false)
 
-  const highlightedLines = useMemo(() => {
-    if (!highlights) return []
-    return highlights.split(',').reduce<number[]>((acc, cur) => {
-      const limits = cur.split('-')
-      const rows = []
-      if (limits.length === 1) {
-        rows.push(parseInt(limits[0]))
-      } else if (limits.length === 2) {
-        const start = parseInt(limits[0])
-        const end = parseInt(limits[1])
-        for (let i = start; i <= end; i++) {
-          rows.push(i)
-        }
-      }
-      return acc.concat(rows)
-    }, [])
-  }, [highlights])
+  const {
+    parsedCode,
+    addedLines,
+    removedLines,
+    highlightedLines,
+    warningLines,
+    errorLines,
+    focusedLines,
+  } = useMemo(() => {
+    const lines = code.split('\n')
+    let parsedCode = ''
+    const addedLines: number[] = []
+    const removedLines: number[] = []
+    const highlightedLines = new Set<number>()
+    const warningLines: number[] = []
+    const errorLines: number[] = []
+    const focusedLines: number[] = []
 
-  const { parsedCode, addedLines, removedLines, focusedLines, errorLines, warningLines } =
-    useMemo(() => {
-      const lines = code.split('\n')
-      let parsedCode = ''
-      const addedLines: number[] = []
-      const removedLines: number[] = []
-      const focusedLines: number[] = []
-      const errorLines: number[] = []
-      const warningLines: number[] = []
+    if (highlights) {
+      for (const segment of highlights.split(',')) {
+        const limits = segment.split('-')
+        if (limits.length === 1) {
+          highlightedLines.add(parseInt(limits[0]))
+        } else if (limits.length === 2) {
+          let [start, end] = [parseInt(limits[0]), parseInt(limits[1])].sort((a, b) => a - b)
 
-      if (!raw) {
-        for (let i = 0; i < lines.length; i++) {
-          const line = lines[i]
-          const match = line.match(/^([\s\S]*?)\/\/ \[!code (.*?)]/)
-
-          if (match) {
-            const codeLine = match[1]
-            const mark = match[2]
-
-            const fn = {
-              '++': () => addedLines.push(i + 1),
-              '--': () => removedLines.push(i + 1),
-              focus: () => focusedLines.push(i + 1),
-              error: () => errorLines.push(i + 1),
-              warning: () => warningLines.push(i + 1),
-            }[mark]
-
-            if (fn) {
-              fn()
-            }
-
-            parsedCode += codeLine + '\n'
-          } else {
-            parsedCode += line + '\n'
+          while (start <= end) {
+            highlightedLines.add(start)
+            start++
           }
         }
       }
+    }
 
-      return {
-        parsedCode: raw ? code : parsedCode.trim(),
-        addedLines,
-        removedLines,
-        focusedLines,
-        errorLines,
-        warningLines,
+    if (!raw) {
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i]
+        const match = line.match(/^([\s\S]*?)\/\/ \[!code (.*?)]/)
+
+        if (match) {
+          const codeLine = match[1]
+          const mark = match[2]
+
+          const fn = {
+            [CodeLineMarks.ADDED]: () => addedLines.push(i + 1),
+            [CodeLineMarks.REMOVED]: () => removedLines.push(i + 1),
+            [CodeLineMarks.HIGHLIGHT]: () => highlightedLines.add(i + 1),
+            [CodeLineMarks.WARNING]: () => warningLines.push(i + 1),
+            [CodeLineMarks.ERROR]: () => errorLines.push(i + 1),
+            [CodeLineMarks.FOCUS]: () => focusedLines.push(i + 1),
+          }[mark]
+
+          if (fn) {
+            fn()
+          }
+
+          parsedCode += codeLine + '\n'
+        } else {
+          parsedCode += line + '\n'
+        }
       }
-    }, [code, raw])
+    }
+
+    return {
+      parsedCode: raw ? code : parsedCode.trim(),
+      addedLines,
+      removedLines,
+      highlightedLines: Array.from(highlightedLines),
+      warningLines,
+      errorLines,
+      focusedLines,
+    }
+  }, [code, highlights, raw])
 
   useEffect(() => {
     if (copied) {
@@ -133,9 +150,9 @@ const FencedCodeBlock: React.FC<FencedCodeBlockProps> = props => {
               highlightedLines={highlightedLines}
               addedLines={addedLines}
               removedLines={removedLines}
-              focusedLines={focusedLines}
-              errorLines={errorLines}
               warningLines={warningLines}
+              errorLines={errorLines}
+              focusedLines={focusedLines}
             />
           </div>
         </div>

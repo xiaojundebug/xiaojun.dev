@@ -41,13 +41,13 @@
         }
       }
 
-      &.error {
-        background: linear-gradient(#f87171 0%, #f87171) no-repeat, rgba(239, 68, 68, 0.2);
+      &.warning {
+        background: linear-gradient(#facc15 0%, #facc15) no-repeat, rgba(234, 179, 8, 0.2);
         background-size: 3px;
       }
 
-      &.warning {
-        background: linear-gradient(#facc15 0%, #facc15) no-repeat, rgba(234, 179, 8, 0.2);
+      &.error {
+        background: linear-gradient(#f87171 0%, #f87171) no-repeat, rgba(239, 68, 68, 0.2);
         background-size: 3px;
       }
 

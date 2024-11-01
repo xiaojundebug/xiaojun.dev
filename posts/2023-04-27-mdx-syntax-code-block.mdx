@@ -3,6 +3,7 @@ title: MDX Syntax - CodeBlock
 date: '2023-04-26T16:00:02.000Z'
 tags:
   - MDX
+updatedOn: '2024-11-01T03:09:21.436Z'
 ---
 
 ## Line Numbers
@@ -11,7 +12,7 @@ default config: `site.config.js` -> `config.markdown.lineNumbers`
 
 **Input**
 
-````mdx
+````mdx raw
 ```js lineNumbers={false}
 // lineNumbers is disabled
 const line2 = 'This is line 2'
@@ -19,7 +20,7 @@ const line3 = 'This is line 3'
 ```
 ````
 
-````mdx
+````mdx raw
 ```js lineNumbers
 // lineNumbers is enabled
 const line2 = 'This is line 2'
@@ -45,7 +46,7 @@ const line3 = 'This is line 3'
 
 **Input**
 
-````mdx
+````mdx raw
 ```ts title="src/utils/clipboard.ts"
 export function copyToClipboard(text: string) {
   if (navigator && navigator.clipboard && navigator.clipboard.writeText)
@@ -68,24 +69,28 @@ export function copyToClipboard(text: string) {
 
 **Input**
 
-````mdx
-```text lineNumbers highlights='1,3-4'
+````mdx raw
+```text lineNumbers highlights='1,3-5'
 line 1
 line 2
 line 3
 line 4
 line 5
+line 6
+line 7 // [!code highlight]
 ```
 ````
 
 **Output**
 
-```text lineNumbers highlights='1,3-4'
+```text lineNumbers highlights='1,3-5'
 line 1
 line 2
 line 3
 line 4
 line 5
+line 6
+line 7 // [!code highlight]
 ```
 
 ## Colored Diffs in Code Blocks

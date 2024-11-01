@@ -5,7 +5,7 @@ import SevenSegmentDisplayProvider from './Provider'
 import Digit from './Digit'
 import { DigitType } from './types'
 
-export interface RetroHitCounterProps {
+export interface SevenSegmentDisplayProps {
   value: number
   minLength?: number
   digitSize?: number
@@ -19,7 +19,7 @@ export interface RetroHitCounterProps {
   glow?: boolean // 微光效果
 }
 
-const RetroHitCounter: React.FC<RetroHitCounterProps> = props => {
+const SevenSegmentDisplay: React.FC<SevenSegmentDisplayProps> = props => {
   const {
     value,
     minLength = 4,
@@ -58,4 +58,4 @@ const RetroHitCounter: React.FC<RetroHitCounterProps> = props => {
   )
 }
 
-export default RetroHitCounter
+export default SevenSegmentDisplay

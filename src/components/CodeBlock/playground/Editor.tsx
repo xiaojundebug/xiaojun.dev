@@ -29,9 +29,9 @@ const Editor: React.FC<EditorProps> = props => {
     highlightedLines = [],
     addedLines = [],
     removedLines = [],
-    focusedLines = [],
-    errorLines = [],
     warningLines = [],
+    errorLines = [],
+    focusedLines = [],
     lineNumbers,
   } = props
 
@@ -67,9 +67,9 @@ const Editor: React.FC<EditorProps> = props => {
                         highlighted: highlightedLines.includes(i + 1),
                         added: addedLines.includes(i + 1),
                         removed: removedLines.includes(i + 1),
-                        focused: focusedLines.includes(i + 1),
-                        error: errorLines.includes(i + 1),
                         warning: warningLines.includes(i + 1),
+                        error: errorLines.includes(i + 1),
+                        focused: focusedLines.includes(i + 1),
                       }),
                     })}
                     key={i}
