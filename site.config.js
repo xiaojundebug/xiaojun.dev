@@ -1,7 +1,7 @@
 module.exports = {
   name: 'Xiaojun Zhou',
   title: 'Xiaojun Zhou',
-  description: '新生代农民工 / 金融消费者 / 共产主义接班人 ',
+  description: '请勿打扰，创世神正在沉思。',
   avatar: '/avatar.png',
   logo: '/logo.svg',
   siteUrl: 'https://www.xiaojun.im',
@@ -21,6 +21,7 @@ module.exports = {
     { name: 'Song\'s Blog', link: 'https://songxwn.com' },
     { name: '远川', link: 'https://crazystudent13.cn' },
     { name: '泰罗', link: 'https://bioart.icu' },
+    { name: 'liangerwen', link: 'https://blog-nine-navy-52.vercel.app/links' },
   ],
   // en | zh-CN
   language: 'zh-CN',

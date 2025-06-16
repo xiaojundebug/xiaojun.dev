@@ -2,7 +2,7 @@ import React from 'react'
 import Profile from '@/components/Profile'
 import useTranslation from '@/hooks/useTranslation'
 import Link from 'next/link'
-import LatestPosts from "@/app/LatestPosts";
+import LatestPosts from '@/app/LatestPosts'
 import Projects from './Projects'
 
 // export const revalidate = 86400
@@ -21,14 +21,15 @@ export default async function Home() {
       <div className="prose-container">
         <Profile />
         <p className="mt-4 break-words leading-loose">
-          你好 👋，我是一个前端开发人员（2017 ～ 至今），从事于直播行业，工作地在杭州。
+          你好 👋，我是一个前端开发人员（2017 ～ 至今），目前在杭州从事于直播行业。
         </p>
         <p className="mt-4 break-words leading-loose">
-          我一直对前端开发怀着浓厚的兴趣，同时也持续关注着设计领域的动态与发展，让我感到兴奋的一些事情包括
-          CSS、设计风格、动效、打造出色的组件 API、以及让界面更加生动有趣。
+          我始终对前端开发充满热情，同时也密切关注设计领域的动态与趋势。让我兴奋的事包括探索 CSS
+          的边界、研究设计风格与动效、打磨组件 API、以及让界面变得更加生动有趣。
         </p>
         <p className="mt-4 break-words leading-loose">
-          除此之外我还痴迷于提高个人生产力，我认为同样一个设备或 App 在我手中总能变得更好用 😎。
+          此外，我还沉迷于提升个人生产力。无论是一台设备还是一款
+          App，我总能找到更顺手、高效的使用方式 😎。
         </p>
         <Title text={t('home-page.posts.title')} />
         <LatestPosts />
