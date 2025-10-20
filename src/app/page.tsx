@@ -44,12 +44,14 @@ export default async function Home() {
         <Title text={t('home-page.projects.title')} />
         <Projects />
         <div className="text-center mt-6">
-          <Link
+          <a
             className="inline-flex items-center justify-center gap-1 text-zinc-400 border-b border-zinc-400/10 hover:border-zinc-400/50 transition-colors"
             href="https://github.com/xiaojundebug?tab=repositories&sort=stargazers"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {t('home-page.projects.view-all')}
-          </Link>
+          </a>
         </div>
       </div>
     </>

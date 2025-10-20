@@ -91,28 +91,33 @@ const DesktopHeader: React.FC<{ menus: { label: string; href: string }[] }> = ({
             }}
             aria-hidden
           ></animated.div>
-          {menus.map(menu => (
-            <li key={menu.href}>
-              <Link
-                className={clsx(
-                  'relative block py-2 px-3 font-medium text-sm hover:text-primary transition-colors',
-                  {
-                    'text-primary': pathname === menu.href,
-                  },
-                )}
-                href={menu.href}
-              >
-                {menu.label}
-                <span
+          {menus.map(menu => {
+            const active =
+              pathname === menu.href || (menu.href !== '/' && pathname.startsWith(menu.href))
+
+            return (
+              <li key={menu.href}>
+                <Link
                   className={clsx(
-                    'absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-primary/0 via-primary/40 dark:via-primary/60 to-primary/0 transition-opacity',
-                    { 'opacity-0': pathname !== menu.href },
-                    { 'opacity-100': pathname === menu.href },
+                    'relative block py-2 px-3 font-medium text-sm hover:text-primary transition-colors',
+                    {
+                      'text-primary': active,
+                    },
                   )}
-                ></span>
-              </Link>
-            </li>
-          ))}
+                  href={menu.href}
+                >
+                  {menu.label}
+                  <span
+                    className={clsx(
+                      'absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-primary/0 via-primary/40 dark:via-primary/60 to-primary/0 transition-opacity',
+                      { 'opacity-0': !active },
+                      { 'opacity-100': active },
+                    )}
+                  ></span>
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </nav>
       <DarkModeToggle />

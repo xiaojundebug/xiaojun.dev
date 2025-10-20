@@ -1,12 +1,12 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fxiaojundebug%2Fxiaojun.im)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fxiaojundebug%2Fxiaojun.dev)
 
-# xiaojun.im
+# xiaojun.dev
 
 [English](./README.md) • [中文](./README.zh-CN.md)
 
 我的个人博客，由 Next.js、TypeScript、MDX 和 TailwindCSS 构建。
 
-👀 [在线预览](https://xiaojun.im/)
+👀 [在线预览](https://xiaojun.dev/)
 
 ## 特色
 
@@ -28,7 +28,7 @@
    UPSTASH_REDIS_REST_TOKEN = 填入自己的信息
    ```
 
-5. 使用 `npm run new:post filename title [tag1] [tag2] ...` 命令在 `posts` 中创建一篇文章，更多语法可参考[示例文章](https://www.xiaojun.im/posts/2023-04-27-mdx-syntax-guide)
+5. 使用 `npm run new:post filename title [tag1] [tag2] ...` 命令在 `posts` 中创建一篇文章，更多语法可参考[示例文章](https://www.xiaojun.dev/posts/2023-04-27-mdx-syntax-guide)
 6. 执行 `npm run dev` 预览效果
 7. 将它部署在 [Vercel](https://vercel.com)，具体很简单，可以跟着官方教程一步步来
 8. 如果你喜欢的话，麻烦给这个项目一个 start ✨，这对我是很大鼓励 🙏

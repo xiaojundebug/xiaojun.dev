@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { getMDXExport } from 'mdx-bundler/client'
-import NextLink from 'next/link'
+import Link from 'next/link'
 import dayjs from 'dayjs'
 import config from 'config'
 import useTranslation from '@/hooks/useTranslation'
@@ -85,14 +85,14 @@ const PostPage: React.FC<PostPageProps> = props => {
             {tags && tags.length > 0 && (
               <div className="flex items-center flex-wrap m-auto mt-6 text-sm gap-2 sm:gap-3">
                 {tags.map((tag: string) => (
-                  <NextLink
+                  <Link
                     key={tag}
                     className="bg-primary/[0.12] text-primary px-2.5 py-0.5 rounded-full font-medium"
                     href={`/tags/${tag}`}
                     prefetch={false}
                   >
                     #{tag}
-                  </NextLink>
+                  </Link>
                 ))}
               </div>
             )}
@@ -130,7 +130,7 @@ const PostPage: React.FC<PostPageProps> = props => {
                 {/* 上一篇 */}
                 <span className="w-1/2">
                   {prevPost ? (
-                    <NextLink
+                    <Link
                       className="group flex h-full border border-zinc-400/20 rounded-xl p-3 sm:p-5 transition gap-2"
                       href={prevPost.link}
                     >
@@ -139,13 +139,13 @@ const PostPage: React.FC<PostPageProps> = props => {
                         aria-hidden
                       />
                       {prevPost.title}
-                    </NextLink>
+                    </Link>
                   ) : null}
                 </span>
                 {/* 下一篇 */}
                 <span className="w-1/2 text-right">
                   {nextPost ? (
-                    <NextLink
+                    <Link
                       className="group flex justify-end h-full border border-zinc-400/20 rounded-xl p-3 sm:p-5 transition gap-2"
                       href={nextPost.link}
                     >
@@ -154,7 +154,7 @@ const PostPage: React.FC<PostPageProps> = props => {
                         className="sm:-mt-[1px] shrink-0 text-2xl sm:text-3xl text-primary transition-transform ease-out-back duration-500 sm:group-hover:translate-x-2"
                         aria-hidden
                       />
-                    </NextLink>
+                    </Link>
                   ) : null}
                 </span>
               </div>

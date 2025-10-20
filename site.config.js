@@ -4,7 +4,7 @@ module.exports = {
   description: '请勿打扰，创世神正在沉思。',
   avatar: '/avatar.png',
   logo: '/logo.svg',
-  siteUrl: 'https://www.xiaojun.im',
+  siteUrl: 'https://www.xiaojun.dev',
   // icon 请在 src/components/Profile.tsx 中修改
   links: [
     { name: 'GitHub', link: 'https://github.com/xiaojundebug' },
