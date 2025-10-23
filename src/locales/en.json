@@ -11,7 +11,6 @@
 
   "post-page.hits": "HITS",
   "post-page.last-updated": "LAST UPDATED",
-  "post-page.reading-time": "{{ minutes }} min read",
   "post-page.outdated-notice": "This post was last modified {{ days }} days ago, and some of the content may be outdated.",
 
   "tags-page.title": "Tags",

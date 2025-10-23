@@ -33,16 +33,6 @@ const projects = [
     desc: 'My hammerspoon scripts',
     url: 'https://github.com/xiaojundebug/hammerspoon-config',
   },
-  {
-    name: 'alfred-npm-search-workflow',
-    desc: 'NPM Workflow for Alfred',
-    url: 'https://github.com/xiaojundebug/alfred-npm-search-workflow',
-  },
-  {
-    name: 'alfred-system-theme',
-    desc: 'Alfred themes inspired on macOS',
-    url: 'https://github.com/xiaojundebug/alfred-system-theme',
-  },
 ]
 
 const Projects = () => {

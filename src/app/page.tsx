@@ -21,15 +21,7 @@ export default async function Home() {
       <div className="prose-container">
         <Profile />
         <p className="mt-4 break-words leading-loose">
-          你好 👋，我是一个前端开发人员（2017 ～ 至今），目前在杭州从事于直播行业。
-        </p>
-        <p className="mt-4 break-words leading-loose">
-          我始终对前端开发充满热情，同时也密切关注设计领域的动态与趋势。让我兴奋的事包括探索 CSS
-          的边界、研究设计风格与动效、打磨组件 API、以及让界面变得更加生动有趣。
-        </p>
-        <p className="mt-4 break-words leading-loose">
-          此外，我还沉迷于提升个人生产力。无论是一台设备还是一款
-          App，我总能找到更顺手、高效的使用方式 😎。
+          你好 👋，我是一个前端开发人员（2017 ～ 至今），从事于直播行业。
         </p>
         <Title text={t('home-page.posts.title')} />
         <LatestPosts />

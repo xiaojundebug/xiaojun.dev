@@ -4,14 +4,13 @@
   "nav.tags": "标签",
   "nav.friends": "友链",
 
-  "home-page.posts.title": "最近发布",
+  "home-page.posts.title": "最近更新",
   "home-page.posts.view-all": "查看更多",
-  "home-page.projects.title": "业余项目",
+  "home-page.projects.title": "不务正业产物",
   "home-page.projects.view-all": "查看更多",
 
   "post-page.hits": "浏览量",
   "post-page.last-updated": "最后修改于",
-  "post-page.reading-time": "阅读时长 {{ minutes }} 分钟",
   "post-page.outdated-notice": "此文最后修改于 {{ days }} 天前，可能包含很多不再适用的废话，阅读需谨慎～",
 
   "tags-page.title": "标签",
