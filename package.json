@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "run-p next-dev watch-content",
     "next-dev": "next dev -p 3456",
-    "build": "next build",
+    "pre-build": "node ./scripts/pre-build.js",
+    "build": "npm run pre-build && next build",
     "start": "next start",
     "new:post": "node ./scripts/new-post",
     "lint": "next lint",
-    "lint:staged": "lint-staged",
+    "lint:staged": "npm run lint",
     "prettier": "prettier --write './src/**/*.{js,jsx,ts,tsx,json}'",
     "watch-content": "node ./scripts/watcher.js"
   },

@@ -50,3 +50,5 @@ posts/*
 src/post-helpers
 public/images/*
 !public/images/test-hero-image.webp
+
+.content-hash-cache.json
