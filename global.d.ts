@@ -6,6 +6,8 @@ interface PostFrontmatter {
   toc?: boolean // 侧边导航是否可见，默认为 true
   image?: string // 顶部图片地址
   draft?: boolean // 为 true 则不会展示该文章，默认为 false
+  summary?: string // AI 生成的摘要，构建时由 scripts/summarize-posts.js 自动补齐
+  skipSummary?: boolean // 为 true 时跳过 AI 摘要（不生成且不展示）
   [key: string]: any
 }
 

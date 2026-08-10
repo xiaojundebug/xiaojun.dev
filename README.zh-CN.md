@@ -28,10 +28,20 @@
    UPSTASH_REDIS_REST_TOKEN = 填入自己的信息
    ```
 
-5. 使用 `npm run new:post filename title [tag1] [tag2] ...` 命令在 `posts` 中创建一篇文章，更多语法可参考[示例文章](https://www.xiaojun.dev/posts/2023-04-27-mdx-syntax-guide)
-6. 执行 `npm run dev` 预览效果
-7. 将它部署在 [Vercel](https://vercel.com)，具体很简单，可以跟着官方教程一步步来
-8. 如果你喜欢的话，麻烦给这个项目一个 start ✨，这对我是很大鼓励 🙏
+5. （可选）文章页顶部的 AI 摘要功能：在 `.env` 中配置 OpenAI 兼容接口的信息，`npm run build` 时会自动为没有 `summary` 的文章生成中文摘要并写入 frontmatter（已有 summary 的文章会跳过；未配置则跳过生成，不影响构建）
+
+   ```env
+   OPENAI_BASE_URL = 你的 OpenAI 兼容接口地址（如 https://api.openai.com/v1）
+   OPENAI_API_KEY = 你的密钥
+   OPENAI_MODEL = 模型名，默认 gpt-4o-mini
+   ```
+
+   也可以单独执行 `npm run summarize` 手动补齐所有文章的摘要，或 `npm run summarize:force` 强制重新生成所有摘要（仍会跳过草稿和 `skipSummary` 的文章）。如果某篇文章不需要摘要，在 frontmatter 中设置 `skipSummary: true` 即可跳过（生成和展示都会跳过）。
+
+6. 使用 `npm run new:post filename title [tag1] [tag2] ...` 命令在 `posts` 中创建一篇文章，更多语法可参考[示例文章](https://www.xiaojun.dev/posts/2023-04-27-mdx-syntax-guide)
+7. 执行 `npm run dev` 预览效果
+8. 将它部署在 [Vercel](https://vercel.com)，具体很简单，可以跟着官方教程一步步来
+9. 如果你喜欢的话，麻烦给这个项目一个 star ✨，这对我是很大鼓励 🙏
 
 ## 感谢
 

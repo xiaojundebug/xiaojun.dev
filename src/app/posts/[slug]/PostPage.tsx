@@ -12,6 +12,7 @@ import { PostHitCounter, PostViews, PostViewsProvider } from './PostViews'
 import PostContent from './PostContent'
 import PostRightAside from './PostRightAside'
 import PostOutdatedAlert from './PostOutdatedAlert'
+import AISummary from '@/components/AISummary'
 import { Heading } from '@/components/TableOfContents'
 
 export interface PostPageProps {
@@ -29,7 +30,7 @@ const PostPage: React.FC<PostPageProps> = props => {
   const {
     slug,
     code,
-    frontmatter: { title, date, updatedOn, tags, image },
+    frontmatter: { title, date, updatedOn, tags, image, summary, skipSummary },
     headings,
     prevPost,
     nextPost,
@@ -99,6 +100,9 @@ const PostPage: React.FC<PostPageProps> = props => {
 
             {/* 旧文章提醒 */}
             {diffDays >= config.outdatedPostThresholdDays && <PostOutdatedAlert days={diffDays} />}
+
+            {/* AI 摘要 */}
+            {summary && !skipSummary && <AISummary summary={summary} />}
 
             {/* Markdown 内容 */}
             <article className="markdown w-full mt-10">

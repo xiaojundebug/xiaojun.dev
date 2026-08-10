@@ -35,13 +35,13 @@ const RefreshIcon = () => {
   return <RefreshButton onClick={refresh} />
 }
 
-export interface CodePlaygroundProps {
+export interface SandpackProps {
   template: SandpackPredefinedTemplate
   dependencies?: Record<string, string>
   externalResources?: string[]
 }
 
-const CodePlayground: React.FC<PropsWithChildren<CodePlaygroundProps>> = props => {
+const Sandpack: React.FC<PropsWithChildren<SandpackProps>> = props => {
   const { children, template, dependencies, externalResources } = props
   const [tabType, setTabType] = useState<TabType>(1)
   const consoleRef = useRef<{ reset: () => void }>(null)
@@ -144,4 +144,4 @@ const CodePlayground: React.FC<PropsWithChildren<CodePlaygroundProps>> = props =
   )
 }
 
-export default CodePlayground
+export default Sandpack
