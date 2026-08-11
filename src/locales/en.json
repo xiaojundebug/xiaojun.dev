@@ -13,6 +13,9 @@
   "post-page.last-updated": "LAST UPDATED",
   "post-page.outdated-notice": "This post was last modified {{ days }} days ago, and some of the content may be outdated.",
   "post-page.ai-summary": "AI Summary",
+  "post-page.continue-reading": "Continue Reading",
+  "post-page.prev": "Previous",
+  "post-page.next": "Next",
 
   "tags-page.title": "Tags",
   "tags-page.desc": "{{ count }} tags in total",

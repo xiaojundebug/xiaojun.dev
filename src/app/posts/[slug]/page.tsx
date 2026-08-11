@@ -128,8 +128,16 @@ export default async function Post({ params }: { params: { slug: string } }) {
         frontmatter={frontmatter}
         headings={headings}
         heroImageInfo={heroImageInfo}
-        prevPost={prev ? { link: `/posts/${prev.slug}`, title: prev.frontmatter.title } : undefined}
-        nextPost={next ? { link: `/posts/${next.slug}`, title: next.frontmatter.title } : undefined}
+        prevPost={
+          prev
+            ? { link: `/posts/${prev.slug}`, title: prev.frontmatter.title, date: prev.frontmatter.date }
+            : undefined
+        }
+        nextPost={
+          next
+            ? { link: `/posts/${next.slug}`, title: next.frontmatter.title, date: next.frontmatter.date }
+            : undefined
+        }
       />
       <AutoRefresh />
     </>

@@ -5,7 +5,7 @@ const HorizontalRule = () => {
     <svg
       className="block overflow-visible w-full max-w-[100px] h-[10px] mx-auto my-16 fill-none stroke-zinc-400/50"
       xmlns="http://www.w3.org/2000/svg"
-      strokeWidth="2"
+      strokeWidth="1.5"
       strokeLinecap="round"
     >
       <line x1="0" y1="0" x2="20" y2="10" />

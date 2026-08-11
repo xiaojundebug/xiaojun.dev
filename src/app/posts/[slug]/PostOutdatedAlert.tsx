@@ -1,25 +1,19 @@
 import React from 'react'
 import useTranslation from '@/hooks/useTranslation'
+import { Warning } from '@/components/icons'
 
 export interface PostOutdatedAlertProps {
   days: number
 }
 
+// 居中的灰色提示：警告图标 + 说明文字，温和不刺眼
 const PostOutdatedAlert: React.FC<PostOutdatedAlertProps> = ({ days }) => {
   const { t } = useTranslation()
 
   return (
-    <div
-      className="relative flex justify-center items-center my-12 py-6 px-7 rounded-xl animate-[move-bg-y_linear_reverse_both] overflow-hidden"
-      style={{
-        background: `url('/outdated-bg.webp') center / cover`,
-        animationTimeline: 'view()',
-      }}
-    >
-      <div className="absolute inset-0 bg-black opacity-10 dark:opacity-50"></div>
-      <p className="relative sm:max-w-[90%] text-zinc-50 dark:opacity-75">
-        {t('post-page.outdated-notice', { days })}
-      </p>
+    <div className="mt-12 flex items-center justify-center gap-2 text-zinc-400 dark:text-zinc-500">
+      <Warning className="w-4 h-4 shrink-0" aria-hidden />
+      <p className="text-sm leading-relaxed">{t('post-page.outdated-notice', { days })}</p>
     </div>
   )
 }

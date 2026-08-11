@@ -13,6 +13,7 @@ import PostContent from './PostContent'
 import PostRightAside from './PostRightAside'
 import PostOutdatedAlert from './PostOutdatedAlert'
 import AISummary from '@/components/AISummary'
+import GoBack from '@/components/GoBack'
 import { Heading } from '@/components/TableOfContents'
 
 export interface PostPageProps {
@@ -20,8 +21,8 @@ export interface PostPageProps {
   code: string
   frontmatter: PostFrontmatter
   headings?: Heading[]
-  prevPost?: { link: string; title: string }
-  nextPost?: { link: string; title: string }
+  prevPost?: { link: string; title: string; date?: string }
+  nextPost?: { link: string; title: string; date?: string }
   heroImageInfo?: BleedThroughImageProps
 }
 
@@ -110,59 +111,71 @@ const PostPage: React.FC<PostPageProps> = props => {
             </article>
 
             {/* 阅读计数器 & 最后修改时间 */}
-            <div className="flex justify-between mt-24">
+            <div className="mt-24 flex items-end justify-between">
               <div className="flex flex-col items-start gap-1">
-                <h3 className="text-[13px] font-bold text-zinc-400 dark:text-zinc-500">
+                <h3 className="text-[13px] font-medium text-zinc-400 dark:text-zinc-500">
                   {t('post-page.hits')}
                 </h3>
                 <PostHitCounter />
               </div>
-              <div className="flex flex-col items-end gap-1">
-                <h3 className="text-[13px] font-bold text-zinc-400 dark:text-zinc-500">
-                  {t('post-page.last-updated')}
-                </h3>
-                <span className="font-medium text-lg">
-                  {dayjs(updatedOn || date).format('MMM D, YYYY')}
-                </span>
+              <div className="text-[13px] font-medium text-zinc-400 dark:text-zinc-500">
+                {t('post-page.last-updated')} {dayjs(updatedOn || date).format('YYYY-MM-DD')}
               </div>
             </div>
 
             <HorizontalRule />
 
-            {config.adjacentPosts && (
-              <div className="my-16 flex justify-between space-x-6 sm:space-x-12 sm:text-lg font-medium">
-                {/* 上一篇 */}
-                <span className="w-1/2">
-                  {prevPost ? (
-                    <Link
-                      className="group flex h-full border border-zinc-400/20 rounded-xl p-3 sm:p-5 transition gap-2"
-                      href={prevPost.link}
-                    >
-                      <ArrowLeft
-                        className="sm:-mt-[1px] shrink-0 text-2xl sm:text-3xl text-primary transition-transform ease-out-back duration-500 sm:group-hover:-translate-x-2"
-                        aria-hidden
-                      />
-                      {prevPost.title}
-                    </Link>
-                  ) : null}
-                </span>
-                {/* 下一篇 */}
-                <span className="w-1/2 text-right">
-                  {nextPost ? (
-                    <Link
-                      className="group flex justify-end h-full border border-zinc-400/20 rounded-xl p-3 sm:p-5 transition gap-2"
-                      href={nextPost.link}
-                    >
-                      {nextPost.title}
-                      <ArrowRight
-                        className="sm:-mt-[1px] shrink-0 text-2xl sm:text-3xl text-primary transition-transform ease-out-back duration-500 sm:group-hover:translate-x-2"
-                        aria-hidden
-                      />
-                    </Link>
-                  ) : null}
-                </span>
-              </div>
+            {config.adjacentPosts && (prevPost || nextPost) && (
+              <section className="mt-20">
+                {/* 继续阅读 */}
+                <p className="mb-8 text-center font-mono text-[13px] text-zinc-400 dark:text-zinc-500">
+                  {t('post-page.continue-reading')}
+                </p>
+
+                {prevPost && (
+                  <Link href={prevPost.link} className="block -mx-3 sm:-mx-4 group" prefetch={false}>
+                    <article className="relative p-3 sm:p-4 rounded-xl">
+                      <span className="mb-1.5 flex items-center gap-1 font-mono text-[13px] font-medium text-zinc-400 dark:text-zinc-500">
+                        <ArrowLeft
+                          className="w-3.5 h-3.5 transition-transform duration-300 ease-out-back group-hover:-translate-x-1"
+                          aria-hidden
+                        />
+                        {t('post-page.prev')}
+                      </span>
+                      <h3 className="mb-1.5 text-lg font-medium group-hover:text-primary transition-colors">
+                        {prevPost.title}
+                      </h3>
+                      <span className="text-sm font-medium text-zinc-400 dark:text-zinc-500">
+                        {dayjs(prevPost.date).format('MMM D, YYYY')}
+                      </span>
+                    </article>
+                  </Link>
+                )}
+
+                {nextPost && (
+                  <Link href={nextPost.link} className="block -mx-3 sm:-mx-4 group" prefetch={false}>
+                    <article className="relative p-3 sm:p-4 rounded-xl">
+                      <span className="mb-1.5 flex items-center gap-1 font-mono text-[13px] font-medium text-zinc-400 dark:text-zinc-500">
+                        {t('post-page.next')}
+                        <ArrowRight
+                          className="w-3.5 h-3.5 transition-transform duration-300 ease-out-back group-hover:translate-x-1"
+                          aria-hidden
+                        />
+                      </span>
+                      <h3 className="mb-1.5 text-lg font-medium group-hover:text-primary transition-colors">
+                        {nextPost.title}
+                      </h3>
+                      <span className="text-sm font-medium text-zinc-400 dark:text-zinc-500">
+                        {dayjs(nextPost.date).format('MMM D, YYYY')}
+                      </span>
+                    </article>
+                  </Link>
+                )}
+              </section>
             )}
+
+            {/* 返回上一页 */}
+            <GoBack />
           </main>
 
           <DesktopOnly>

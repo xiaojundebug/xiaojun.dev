@@ -33,11 +33,6 @@ module.exports = {
         'backdrop-flicker': {
           '50%': { 'backdrop-filter': 'blur(1px) brightness(20%)' },
         },
-        // post outdated alert
-        'move-bg-y': {
-          '0%': { 'background-position': '0 0' },
-          '100%': { 'background-position': '0 100%' },
-        },
       },
     },
   },
