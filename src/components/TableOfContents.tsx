@@ -161,23 +161,33 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ headings }) => {
                     'group relative flex items-center gap-2 max-w-full h-7 text-[13px] font-medium truncate hover:text-zinc-800 dark:hover:text-zinc-50',
                     {
                       'text-zinc-400 dark:text-zinc-500': !active,
-                      'text-zinc-800 dark:text-zinc-50': active,
+                      'text-zinc-800 dark:text-zinc-50 font-medium': active,
                     },
                   )}
                 >
                   <div className="w-[20px]">
                     <div
                       className={clsx(
-                        'h-[4px] rounded-full group-hover:bg-black/50 dark:group-hover:bg-white/50',
+                        'h-0.5 rounded-full group-hover:bg-black/50 dark:group-hover:bg-white/50',
                         {
                           'bg-zinc-400/20': !active,
                           'bg-zinc-400': active,
                         },
                       )}
-                      style={{ width: heading.level > 2 ? 10 : 16 }}
+                      style={{
+                        width: heading.level === 2 ? 18 : heading.level === 3 ? 10 : 4,
+                      }}
                     ></div>
                   </div>
-                  <span className={clsx('truncate', { 'ml-2': heading.level !== 2 })}>
+                  <span
+                    className={clsx(
+                      'truncate transition-opacity duration-200',
+                      {
+                        'opacity-100': active,
+                        'opacity-0 group-hover/toc:opacity-100': !active,
+                      },
+                    )}
+                  >
                     {heading.text}
                   </span>
                 </a>
